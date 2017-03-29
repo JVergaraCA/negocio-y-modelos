@@ -1,0 +1,45 @@
+rails g ejercicios -d postgresql
+cd ejercicios
+bundle
+rake db:create
+rails g model User name email
+rails g model tweet content:string
+rails g migration addUserToTweet user:references 
+rake db:migrate
+subl .
+editar ejercicios/app/models/tweet.rb
+
+class Tweet < ApplicationRecord
+	belongs_to :user
+end
+editar ejercicios/app/models/user.rb
+
+class User < ApplicationRecord
+	has_many :tweet
+end
+
+editar ejercicio/gemfile
+
+group :development, :test do
+gem 'railroady'
+group :development do
+gem 'railroady'
+
+consola
+bundle
+rake diagram.all
+
+subl . seeds.rb
+
+Tweet.destroy.all
+User.destroy.all
+2.times do |t|
+User.create (name:"usuario#{u}")
+2.times do |t|
+user.tweets.build(content:"tweet del usuario #{u.id}")
+end
+end
+
+consola
+
+rake db:seed
